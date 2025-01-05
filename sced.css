@@ -1,0 +1,141 @@
+/* General Body and Container Styling */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.mainBody {
+    width: 100%;
+    padding: 50px 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+/* Navbar customization */
+.navbar {
+    background-color: #007bff;
+}
+
+.navbar-brand {
+    padding-top: var(--bs-navbar-brand-padding-y);
+    padding-bottom: var(--bs-navbar-brand-padding-y);
+    margin-right: var(--bs-navbar-brand-margin-end);
+    font-size: var(--bs-navbar-brand-font-size);
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    padding-left: 62px;
+    font-size: 35px;
+}
+
+/* Styling the buttons (days) */
+.days {
+    width: 250px;
+    height: 70px;
+    background-color: rgb(219, 221, 221);
+    margin-left: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.days {
+    padding-left: -1px;
+    background-color: #0056b3;
+    color: #fff;
+    transform: translateY(-5px);
+    margin-left: 0px;
+}
+
+/* Styling for the main body content */
+.html-intro {
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.html-intro h4 {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.html-intro a {
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.html-intro a:hover {
+    color: #0056b3;
+}
+.Quiz{
+    padding-left: 500px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    .days {
+        width: 200px;
+        font-size: 16px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .html-intro {
+        padding: 20px;
+    }
+
+    .html-intro iframe {
+        width: 100%;
+    }
+}
+
+/* Footer styling */
+footer {
+    margin-top: 50px;
+    padding: 20px 0;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Video and Article centering */
+.text-center {
+    text-align: center;
+}
+
+.embed-responsive {
+    display: flex;
+    justify-content: center;
+}
+
+.bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: #0d6efd !important;
+}
+#Quiz{
+    margin: 0px;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: #007bff;
+    color: white;
+    line-height: inherit;
+    width: 100px;
+    margin-left: -172px;
+    border-radius: 39px;
+}

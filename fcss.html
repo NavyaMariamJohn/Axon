@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Quiz</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #dbeafe, #93c5fd); /* Light blue gradient */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            text-align: center;
+            color: #1e40af; /* Navy blue font color */
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #1e3a8a; /* Slightly darker blue */
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .options li {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            padding: 10px;
+            background: #e0f2fe; /* Light blue background for options */
+            border: 1px solid #93c5fd; /* Border matching the gradient */
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        label:hover {
+            background: #bae6fd; /* Lighter blue on hover */
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6); /* Vibrant blue button gradient */
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s ease-in-out, transform 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #3b82f6, #2563eb); /* Slightly darker blue */
+            transform: translateY(-3px);
+        }
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .time-display {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .video-link {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #0066cc;
+        }
+        .video-link a {
+            text-decoration: none;
+        }
+        /* Modal Styles */
+        #scoreModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+        }
+        .modal-content button {
+            padding: 10px 20px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-content button:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Quiz</h1>
+
+        <!-- Question 1 -->
+        <div class="question">
+            <h3 id="question1"></h3>
+            <ul class="options" id="options1"></ul>
+            <div class="video-link" id="videoLink1"></div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <h3 id="question2"></h3>
+            <ul class="options" id="options2"></ul>
+            <div class="video-link" id="videoLink2"></div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <h3 id="question3"></h3>
+            <ul class="options" id="options3"></ul>
+            <div class="video-link" id="videoLink3"></div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <h3 id="question4"></h3>
+            <ul class="options" id="options4"></ul>
+            <div class="video-link" id="videoLink4"></div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <h3 id="question5"></h3>
+            <ul class="options" id="options5"></ul>
+            <div class="video-link" id="videoLink5"></div>
+        </div>
+
+        <!-- Time Display -->
+        <div class="time-display" id="timeDisplay">
+            Time taken: 00:00
+        </div>
+
+        <!-- Submit Button -->
+        <button class="submit-btn" onclick="submitQuiz()">Submit</button>
+    </div>
+
+    <!-- Modal for Score Display -->
+    <div id="scoreModal">
+        <div class="modal-content">
+            <p id="scoreMessage"></p>
+            <button onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        let startTime;
+        let endTime;
+        let questions;
+
+        // Start the timer when the page loads
+        window.onload = function() {
+            startTime = new Date();
+            loadQuiz();  // Load questions and options
+        };
+
+        // Load questions and answers
+        function loadQuiz() {
+            questions = [
+                {
+                    question: "Which CSS property is used to change the font of an element?",
+                    options: [
+                        { value: "a", text: "font-style" },
+                        { value: "b", text: "font-size" },
+                        { value: "c", text: "font-family" },
+                        { value: "d", text: "text-align" }
+                    ],
+                    correctAnswer: "c",
+                    videoLink: "https://youtu.be/wRNinF7YQqQ?si=tM7bvHRn5-VoIwUx=11m0s"
+                },
+                {
+                    question: "What is the purpose of the border-image property in CSS?",
+                    options: [
+                        { value: "a", text: "To apply an image as the border of an element" },
+                        { value: "b", text: "To define the width of the border around an element" },
+                        { value: "c", text: "To make the border radius responsive" },
+                        { value: "d", text: "To colorize the element's border" }
+                    ],
+                    correctAnswer: "a",
+                    videoLink: "https://youtu.be/wRNinF7YQqQ?si=tM7bvHRn5-VoIwUx=14m20s"
+                },
+                {
+                    question:"What is the correct syntax to set a background image that repeats horizontally but not vertically?",
+                    options: [
+                        { value: "a", text: "background-repeat: repeat-x;" },
+                        { value: "b", text: "background-repeat: no-repeat;" },
+                        { value: "c", text: "background-position: repeat-x;" },
+                        { value: "d", text: "background-repeat: repeat-y;" }
+                    ],
+                    correctAnswer: "a",
+                    videoLink: "https://youtu.be/wRNinF7YQqQ?si=tM7bvHRn5-VoIwUx=16m56s"
+                },
+                {
+                    question: " Which of the following is NOT a valid value for the position property in CSS?",
+                    options: [
+                        { value: "a", text: "static" },
+                        { value: "b", text: "relative" },
+                        { value: "c", text: "absolute" },
+                        { value: "d", text: "sticky-fixed" }
+                    ],
+                    correctAnswer: "d",
+                    videoLink: "https://youtu.be/wRNinF7YQqQ?si=tM7bvHRn5-VoIwUx=29m01s"
+                },
+                {
+                    question: " When using @keyframes in CSS animations, which of the following is the correct way to define the start and end points of an animation?",
+                    options: [
+                        { value: "a", text: "@keyframes animation-name { 0% { property: value; } 100% { property: value; }}" },
+                        { value: "b", text: "@keyframes animation-name { start { property: value; } end { property: value; }}" },
+                        { value: "c", text: "@keyframes animation-name { from { property: value; } to { property: value; }}" },
+                        { value: "d", text: " @keyframes animation-name { begin { property: value; } finish { property: value; }}" }
+                    ],
+                    correctAnswer: "a",
+                    videoLink: "https://youtu.be/wRNinF7YQqQ?si=tM7bvHRn5-VoIwUx=50m54s"
+                }
+            ];
+
+            questions.forEach((q, i) => {
+                document.getElementById(`question${i+1}`).innerHTML = `${i+1}. ${q.question}`;
+                let optionsHtml = '';
+                q.options.forEach(opt => {
+                    optionsHtml += `<li><label><input type="radio" name="q${i+1}" value="${opt.value}"> ${opt.text}</label></li>`;
+                });
+                document.getElementById(`options${i+1}`).innerHTML = optionsHtml;
+            });
+        }
+
+        // Function to calculate the time taken and show the result
+        function submitQuiz() {
+            endTime = new Date();
+            const timeTaken = (endTime - startTime) / 1000;  // Time in seconds
+            const minutes = Math.floor(timeTaken / 60);
+            const seconds = Math.floor(timeTaken % 60);
+            document.getElementById('timeDisplay').innerHTML = `Time taken: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            let score = 0;
+            let totalQuestions = 5;
+            let incorrectAnswers = [];
+
+            // Check the answers and store incorrect answers
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const videoLinkElement = document.getElementById(`videoLink${i}`);
+                const q = questions[i - 1];  // Access the question object
+
+                if (selected && selected.value === q.correctAnswer) {
+                    score++;
+                    videoLinkElement.innerHTML = `Correct! Watch the video to learn more: <a href="${q.videoLink}" target="_blank">Click here</a>`;
+                } else {
+                    incorrectAnswers.push(i);
+                    videoLinkElement.innerHTML = `Incorrect! Watch the video: <a href="${q.videoLink}" target="_blank">Click here</a>`;
+                }
+            }
+
+            // Show appropriate feedback message based on score
+            let feedbackMessage = '';
+            if (score === totalQuestions) {
+                feedbackMessage = "Excellent! You got all the answers correct!";
+            } else if (score >= totalQuestions - 1) {
+                feedbackMessage = "Great job! You almost nailed it!";
+            } else if (score >= totalQuestions / 2) {
+                feedbackMessage = "Good effort! Keep practicing to improve.";
+            } else {
+                feedbackMessage = "Don't worry! Review the material and try again.";
+            }
+
+            // Display the score and feedback message
+            const scoreMessage = `${feedbackMessage} You scored ${score} out of ${totalQuestions}. Incorrect answers: ${incorrectAnswers.join(", ")}`;
+
+            // Show modal with the result
+            document.getElementById("scoreMessage").innerHTML = scoreMessage;
+            document.getElementById("scoreModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("scoreModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>

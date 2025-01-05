@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Selection</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #cce5ff, #a9d8ff); /* Lighter blue gradient */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333; /* Black font color */
+            font-size: 2.2rem;
+        }
+        .course-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .course-list li {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            color: #333; 
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+        .course-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            background: #dfefff; 
+        }
+        .message {
+            font-size: 1.2rem;
+            color: #333; 
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to right, #66b3ff, #3399ff); 
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            
+}
+
+
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #3399ff, #0073e6); 
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select a Course</h1>
+
+        <!-- List of Courses -->
+        <ul class="course-list">
+            <li onclick="checkCourse('Web Design')">Web Design</li>
+            <li onclick="checkCourse('Graphic Design')">Graphic Design</li>
+            <li onclick="checkCourse('Data Science')">Data Science</li>
+            <li onclick="checkCourse('Machine Learning')">Machine Learning</li>
+        </ul>
+
+        <!-- Message Display -->
+        <div id="message" class="message"></div>
+
+        <!-- Take Test Button -->
+        <button id="takeTestBtn" class="btn" style="display: none;" onclick="startTest()">Take Test</button>
+    </div>
+
+    <script>
+         let selectedCourse = '';
+        // Function to handle course selection
+        function checkCourse(courseName) {
+            const messageElement = document.getElementById('message');
+            const takeTestBtn = document.getElementById('takeTestBtn');
+            selectedCourse = courseName;
+            // Display message based on selected course
+            messageElement.textContent = `You selected the ${courseName} course.`;
+            if (courseName === 'Web Design') {
+            takeTestBtn.style.display = 'block';
+        } else {
+            // Show the "Take Test" button when any course is selected
+            takeTestBtn.style.display = "inline-block";
+        }
+        }
+        // Function to start the test (placeholder action)
+        function startTest() {
+            if (selectedCourse === 'Web Design') {
+            // Redirect to fselfass.html
+            window.location.href = 'fselfass.html';
+        } else {
+            alert('You can only take the test for Web Design.');
+        }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Designing Assessment</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #dbeafe, #93c5fd); /* Light blue gradient */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            text-align: center;
+            color: #1e40af; /* Navy blue font color */
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #1e3a8a; /* Slightly darker blue */
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .options li {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            padding: 10px;
+            background: #e0f2fe; /* Light blue background for options */
+            border: 1px solid #93c5fd; /* Border matching the gradient */
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        label:hover {
+            background: #bae6fd; /* Lighter blue on hover */
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6); /* Vibrant blue button gradient */
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s ease-in-out, transform 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #3b82f6, #2563eb); /* Slightly darker blue */
+            transform: translateY(-3px);
+        }
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }   
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Web Designing Assessment</h1>
+
+        <!-- Questions -->
+        <div class="question">
+            <h3>1. What does HTML stand for?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="b"> A. Hyper Text Markup Language</label></li>
+                <li><label><input type="radio" name="q1" value="a"> B. Hyperlinks and Text Markup Language</label></li>
+                <li><label><input type="radio" name="q1" value="c"> C. Home Tool Markup Language</label></li>
+                <li><label><input type="radio" name="q1" value="d"> D. Hyperlinking Text Management Language</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>2. Which HTML tag is used to define an internal stylesheet?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="a"> A. &lt;style&gt;</label></li>
+                <li><label><input type="radio" name="q2" value="b"> B. &lt;css&gt;</label></li>
+                <li><label><input type="radio" name="q2" value="c"> C. &lt;script&gt;</label></li>
+                <li><label><input type="radio" name="q2" value="d"> D. &lt;design&gt;</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>3. What does CSS stand for?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="b"> A. Cascading Style Sheets</label></li>
+                <li><label><input type="radio" name="q3" value="a"> B. Creative Style Sheets</label></li>
+                <li><label><input type="radio" name="q3" value="c"> C. Computer Style Sheets</label></li>
+                <li><label><input type="radio" name="q3" value="d"> D. Colorful Style Sheets</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>4. Which property is used to change the background color in CSS?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="a"> A. background-color</label></li>
+                <li><label><input type="radio" name="q4" value="b"> B. bgcolor</label></li>
+                <li><label><input type="radio" name="q4" value="c"> C. color-background</label></li>
+                <li><label><input type="radio" name="q4" value="d"> D. bg-color</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>5. What does JavaScript primarily run on?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="b"> A. Browser</label></li>
+                <li><label><input type="radio" name="q5" value="a"> B. Server</label></li>
+                <li><label><input type="radio" name="q5" value="c"> C. Operating System</label></li>
+                <li><label><input type="radio" name="q5" value="d"> D. Compiler</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>6. Which tag is used to create a hyperlink in HTML?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q6" value="a"> A. &lt;a&gt;</label></li>
+                <li><label><input type="radio" name="q6" value="b"> B. &lt;link&gt;</label></li>
+                <li><label><input type="radio" name="q6" value="c"> C. &lt;hyperlink&gt;</label></li>
+                <li><label><input type="radio" name="q6" value="d"> D. &lt;href&gt;</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>7. What does the 'float' property do in CSS?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q7" value="a"> A. Aligns elements to the left or right of their container</label></li>
+                <li><label><input type="radio" name="q7" value="b"> B. Moves an element to the top of its container</label></li>
+                <li><label><input type="radio" name="q7" value="c"> C. Changes the size of the element</label></li>
+                <li><label><input type="radio" name="q7" value="d"> D. Sets the position of an element</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>8. What is the purpose of the `async` attribute in the &lt;script&gt; tag?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="a"> A. To load scripts in parallel but execute in order</label></li>
+                <li><label><input type="radio" name="q9" value="b"> B. To execute the script as soon as it's available without blocking HTML parsing</label></li>
+                <li><label><input type="radio" name="q9" value="c"> C. To execute the script after all other scripts have loaded</label></li>
+                <li><label><input type="radio" name="q9" value="d"> D. To prioritize script execution</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>9. What does the 'z-index' property do in CSS?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q9" value="a"> A. Sets the stacking order of elements</label></li>
+                <li><label><input type="radio" name="q9" value="b"> B. Sets the color of an element's border</label></li>
+                <li><label><input type="radio" name="q9" value="c"> C. Sets the opacity of an element</label></li>
+                <li><label><input type="radio" name="q9" value="d"> D. Sets the position of an element</label></li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>10. How do you link an external JavaScript file to an HTML document?</h3>
+            <ul class="options">
+                <li><label><input type="radio" name="q10" value="a"> A. &lt;script src="file.js"&gt;</label></li>
+                <li><label><input type="radio" name="q10" value="b"> B. &lt;link rel="script" href="file.js"&gt;</label></li>
+                <li><label><input type="radio" name="q10" value="c"> C. &lt;js src="file.js"&gt;</label></li>
+                <li><label><input type="radio" name="q10" value="d"> D. &lt;script link="file.js"&gt;</label></li>
+            </ul>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="submit-btn" onclick="submitTest()">Submit</button>
+    </div>
+
+    <!-- Modal (Popup message) -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Your Score: <span id="score"></span></h2>
+            <h3>Your Level: <span id="level"></span></h3>
+        </div>
+    </div>
+
+    <script>
+        function submitTest() {
+            // Correct answers
+            const answers = {
+                q1: 'b',
+                q2: 'a',
+                q3: 'b',
+                q4: 'a',
+                q5: 'b',
+                q6: 'a',
+                q7: 'a',
+                q8: 'b',
+                q9: 'a',
+                q10: 'a'
+            };
+
+            let score = 0;
+            // Check answers and calculate score
+            for (let question in answers) {
+                const userAnswer = document.querySelector(`input[name=${question}]:checked`);
+                if (userAnswer && userAnswer.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            // Determine the level based on the score
+            let level;
+            if (score <= 2) {
+                level = "Beginner";
+            } else if (score === 3 || score === 4) {
+                level = "Intermediate";
+            } else {
+                level = "Expert";
+            }
+
+            // Display the modal with the score and level
+            document.getElementById('score').textContent = `${score}/10`;
+            document.getElementById('level').textContent = level;
+            document.getElementById('resultModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('resultModal').style.display = 'none';
+            window.location.href="scedule.html";
+        }
+    </script>
+</body>
+</html>
