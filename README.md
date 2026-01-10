@@ -9,12 +9,20 @@ It was developed within a limited time frame, emphasizing teamwork, idea executi
 ## Tech Stack
 - HTML
 - CSS
+- JavaScript (basic usage)
+
 
 ## My Contribution
+- Assisted in identifying and curating relevant video resources
+- Worked on timestamping and organizing video content
 - Worked on front-end structure and layout
 - Collaborated with team members during ideation and implementation
 
 ## Experience Gained
-- Hackathon-style development
-- Team collaboration
-- Time management under deadlines
+- Experience working in a fast-paced hackathon environment
+- Team collaboration and coordination under time constraints
+- Effective time management while meeting strict deadlines
+- Team-based problem solving and idea execution
+- Basic exposure to JavaScript in a real-world project
+- Content research, organization, and structuring for web platforms
+
